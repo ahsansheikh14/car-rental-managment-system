@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.carrental.controllers.myBookingsController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="My Bookings" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="bookingsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="bookingIdColumn" text="Booking ID"/>
+            <TableColumn fx:id="carInfoColumn" text="Car"/>
+            <TableColumn fx:id="startDateColumn" text="Start Date"/>
+            <TableColumn fx:id="endDateColumn" text="End Date"/>
+            <TableColumn fx:id="totalPriceColumn" text="Total Price"/>
+            <TableColumn fx:id="statusColumn" text="Status"/>
+            <TableColumn fx:id="actionColumn" text="Action"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Back to Dashboard" onAction="#handleBackToDashboard"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="Refresh" onAction="#handleRefresh"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    </HBox>
+
+    <Label fx:id="statusLabel"/>
+</VBox> 

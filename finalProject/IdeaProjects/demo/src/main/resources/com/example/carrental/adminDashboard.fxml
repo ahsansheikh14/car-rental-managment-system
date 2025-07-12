@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+
+<VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.carrental.controllers.adminDashboardController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Admin Dashboard" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Add New Car" onAction="#handleAddCar"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="View All Cars" onAction="#handleViewCars"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="Manage Users" onAction="#handleManageUsers"
+                style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+        <Button text="View Payments" onAction="#handleViewPayments"
+                style="-fx-background-color: #9C27B0; -fx-text-fill: white;"/>
+    </HBox>
+
+    <TabPane fx:id="mainTabPane" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Cars">
+            <content>
+                <VBox spacing="10">
+                    <!-- Car Seat Filter Buttons -->
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button fx:id="allCarsButton" text="All Cars" onAction="#handleViewCars"
+                                style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                        <Button fx:id="fourSeaterButton" text="4-Seater Cars" onAction="#handleViewFourSeaters"
+                                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                        <Button fx:id="fivePlusSeaterButton" text="5+ Seater Cars" onAction="#handleViewFivePlusSeaters"
+                                style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+                    </HBox>
+                    <TableView fx:id="carsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="makeColumn" text="Make"/>
+                            <TableColumn fx:id="modelColumn" text="Model"/>
+                            <TableColumn fx:id="yearColumn" text="Year"/>
+                            <TableColumn fx:id="priceColumn" text="Price"/>
+                            <TableColumn fx:id="seatsColumn" text="Seats"/>
+                            <TableColumn fx:id="specialColumn" text="Special"/>
+                            <TableColumn fx:id="statusColumn" text="Status"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </content>
+        </Tab>
+        <Tab text="Payment Tracking">
+            <content>
+                <VBox spacing="10">
+                    <TableView fx:id="bookingsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="bookingIdColumn" text="Booking ID"/>
+                            <TableColumn fx:id="customerNameColumn" text="Customer"/>
+                            <TableColumn fx:id="carInfoColumn" text="Car Info"/>
+                            <TableColumn fx:id="startDateColumn" text="Start Date"/>
+                            <TableColumn fx:id="endDateColumn" text="End Date"/>
+                            <TableColumn fx:id="bookingStatusColumn" text="Status"/>
+                            <TableColumn fx:id="originalAmountColumn" text="Original Amount"/>
+                            <TableColumn fx:id="lateFeeColumn" text="Late Fee"/>
+                            <TableColumn fx:id="totalAmountColumn" text="Total"/>
+                            <TableColumn fx:id="paymentStatusColumn" text="Payment Status"/>
+                            <TableColumn fx:id="actionColumn" text="Actions"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </content>
+        </Tab>
+        <Tab text="Payment Analytics">
+            <content>
+                <VBox spacing="10">
+                    <!-- Analytics Period Selection Buttons -->
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button fx:id="dailyAnalyticsButton" text="Daily Analytics" onAction="#handleViewDailyAnalytics"
+                                style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                        <Button fx:id="weeklyAnalyticsButton" text="Weekly Analytics" onAction="#handleViewWeeklyAnalytics"
+                                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                        <Button fx:id="monthlyAnalyticsButton" text="Monthly Analytics" onAction="#handleViewMonthlyAnalytics"
+                                style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+                    </HBox>
+                    
+                    <!-- Payment Analytics Summary -->
+                    <GridPane hgap="20" vgap="10" alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #f5f5f5; -fx-background-radius: 5;">
+                        <Label text="Total Revenue:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label fx:id="totalRevenueLabel" text="$0.00" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Completed Bookings:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label fx:id="completedBookingsLabel" text="0" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Pending Payments:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <Label fx:id="pendingPaymentsLabel" text="$0.00" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                        
+                        <Label text="Late Fees Collected:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <Label fx:id="lateFeesLabel" text="$0.00" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                    </GridPane>
+                    
+                    <!-- Analytics Chart -->
+                    <BarChart fx:id="revenueChart" title="Revenue Analytics" legendVisible="true" VBox.vgrow="ALWAYS">
+                        <xAxis>
+                            <CategoryAxis fx:id="periodAxis" label="Time Period"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis fx:id="amountAxis" label="Amount ($)"/>
+                        </yAxis>
+                    </BarChart>
+                    
+                    <!-- Payment Details Table -->
+                    <TableView fx:id="analyticsTable" VBox.vgrow="ALWAYS" prefHeight="200">
+                        <columns>
+                            <TableColumn fx:id="analyticsPeriodColumn" text="Period"/>
+                            <TableColumn fx:id="totalRevenueColumn" text="Total Revenue"/>
+                            <TableColumn fx:id="bookingsCountColumn" text="Bookings"/>
+                            <TableColumn fx:id="avgBookingValueColumn" text="Avg. Value"/>
+                            <TableColumn fx:id="lateFeesCollectedColumn" text="Late Fees"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </content>
+        </Tab>
+    </TabPane>
+
+    <Label fx:id="statusLabel"/>
+</VBox>

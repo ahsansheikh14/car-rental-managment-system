@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.carrental.controllers.bookingController">
+    <children>
+        <Label text="Book a Car" layoutX="180" layoutY="20" style="-fx-font-size: 18px;"/>
+        <TableView fx:id="carTable" layoutX="30" layoutY="60" prefWidth="400" prefHeight="150">
+            <columns>
+                <TableColumn text="ID" prefWidth="50"/>
+                <TableColumn text="Model" prefWidth="100"/>
+                <TableColumn text="Brand" prefWidth="100"/>
+                <TableColumn text="Year" prefWidth="50"/>
+                <TableColumn text="Price/Day" prefWidth="100"/>
+            </columns>
+        </TableView>
+        <Label text="Start Date:" layoutX="30" layoutY="230"/>
+        <DatePicker fx:id="startDatePicker" layoutX="100" layoutY="225"/>
+        <Label text="End Date:" layoutX="250" layoutY="230"/>
+        <DatePicker fx:id="endDatePicker" layoutX="320" layoutY="225"/>
+        <Button text="Book" fx:id="bookButton" layoutX="450" layoutY="225" onAction="#handleBook"/>
+        <TableView fx:id="bookingTable" layoutX="30" layoutY="270" prefWidth="400" prefHeight="120">
+            <columns>
+                <TableColumn text="Booking ID" prefWidth="80"/>
+                <TableColumn text="Car ID" prefWidth="60"/>
+                <TableColumn text="Start" prefWidth="100"/>
+                <TableColumn text="End" prefWidth="100"/>
+                <TableColumn text="Status" prefWidth="60"/>
+            </columns>
+        </TableView>
+        <Button text="Back" fx:id="backButton" layoutX="450" layoutY="370" onAction="#handleBack"/>
+    </children>
+</AnchorPane>

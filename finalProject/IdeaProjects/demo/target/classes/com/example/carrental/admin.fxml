@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.carrental.controllers.adminController">
+    <children>
+        <Label text="Admin Panel" layoutX="180" layoutY="20" style="-fx-font-size: 18px;"/>
+        <TableView fx:id="carTable" layoutX="30" layoutY="60" prefWidth="400" prefHeight="200">
+            <columns>
+                <TableColumn text="ID" prefWidth="50"/>
+                <TableColumn text="Model" prefWidth="100"/>
+                <TableColumn text="Brand" prefWidth="100"/>
+                <TableColumn text="Year" prefWidth="50"/>
+                <TableColumn text="Price/Day" prefWidth="100"/>
+            </columns>
+        </TableView>
+        <Button text="Add Car" fx:id="addCarButton" layoutX="450" layoutY="60" onAction="#handleAddCar"/>
+        <Button text="Remove Car" fx:id="removeCarButton" layoutX="450" layoutY="100" onAction="#handleRemoveCar"/>
+        <Button text="Back" fx:id="backButton" layoutX="450" layoutY="200" onAction="#handleBack"/>
+    </children>
+</AnchorPane>

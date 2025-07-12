@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.carrental.controllers.manageUsersController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Manage Users" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Add New User" onAction="#handleAddUser"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="Delete User" onAction="#handleDeleteUser"
+                style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+        <Button text="Refresh" onAction="#handleRefresh"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+    </HBox>
+
+    <TableView fx:id="usersTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID"/>
+            <TableColumn fx:id="nameColumn" text="Name"/>
+            <TableColumn fx:id="contactColumn" text="Contact"/>
+            <TableColumn fx:id="licenseColumn" text="License No"/>
+        </columns>
+    </TableView>
+
+    <Label fx:id="statusLabel"/>
+</VBox> 

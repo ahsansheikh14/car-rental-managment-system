@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.carrental.controllers.dashboardController">
+    <children>
+        <Label text="Dashboard" layoutX="180" layoutY="30" style="-fx-font-size: 18px;"/>
+        <Button text="Admin Panel" fx:id="adminButton" layoutX="100" layoutY="100" onAction="#goToAdmin"/>
+        <Button text="Book a Car" fx:id="bookingButton" layoutX="250" layoutY="100" onAction="#goToBooking"/>
+        <Button text="Logout" fx:id="logoutButton" layoutX="180" layoutY="180" onAction="#handleLogout"/>
+    </children>
+</AnchorPane>

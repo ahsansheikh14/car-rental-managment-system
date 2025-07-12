@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.example.carrental.controllers.userDashboardController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <Label text="User Dashboard" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="View Available Cars" onAction="#handleViewAvailableCars"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="My Bookings" onAction="#handleMyBookings"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    </HBox>
+    
+    <TableView fx:id="availableCarsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="makeColumn" text="Make"/>
+            <TableColumn fx:id="modelColumn" text="Model"/>
+            <TableColumn fx:id="yearColumn" text="Year"/>
+            <TableColumn fx:id="priceColumn" text="Price per Day"/>
+            <TableColumn fx:id="actionColumn" text="Action"/>
+        </columns>
+    </TableView>
+    
+    <Label fx:id="statusLabel"/>
+</VBox> 
